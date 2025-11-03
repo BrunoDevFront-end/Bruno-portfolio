@@ -1,37 +1,43 @@
+// Importação dos estilos e imagens
 import "./App.css";
 import fotoPerfil from "./assets/Bruno.jpeg";
 import imgProjeto1 from "./assets/Projeto1.png";
 import imgProjeto2 from "./assets/Projeto2.png";
 import imgProjeto3 from "./assets/Projeto3.png";
 import imgProjeto4 from "./assets/Projeto4.png";
+
+// Importação de ícones e hooks
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { useState } from "react";
 
 function App() {
+  // Estados para armazenar o nome e a mensagem do formulário de contato
   const [nome, setNome] = useState();
   const [mensagem, setMensagem] = useState();
 
+  // Captura o valor digitado no campo "Nome"
   const ValorName = (event) => {
     setNome(event.target.value);
   };
 
+  // Captura o valor digitado no campo "Mensagem"
   const ValorTexto = (event) => {
     setMensagem(event.target.value);
   };
 
+  // Envia mensagem via WhatsApp utilizando o nome e a mensagem fornecidos
   const enviarWhats = (event) => {
     event.preventDefault;
 
     const telefone = "5548998410706";
-
     const texto = `Olá! meu nome é ${nome}, ${mensagem}`;
     const msgFormatada = encodeURIComponent(texto);
-
     const url = `https://wa.me/${telefone}?text=${msgFormatada}`;
 
     window.open(url, "_blank");
   };
 
+  // Abre o projeto correspondente conforme o ID informado
   const entrarProjetos = (idProjeto) => {
     if (idProjeto == 1) {
       const url = `https://usu-rios-cadastrados.vercel.app/`;
@@ -48,7 +54,7 @@ function App() {
     }
   };
 
-  // Nova função para scroll suave
+  // Realiza o scroll suave até a seção informada
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -56,8 +62,10 @@ function App() {
     }
   };
 
+  // Estrutura do componente principal
   return (
     <div className="container">
+      {/* Seção de perfil */}
       <div className="profile">
         <img src={fotoPerfil} alt="" />
         <h1>Bruno dos Santos Pereira</h1>
@@ -66,6 +74,8 @@ function App() {
           Front-end Developer focado em performance e <br />
           experiência do usuário
         </p>
+
+        {/* Navegação principal com scroll suave */}
         <nav className="navegar-links">
           <li>
             <button
@@ -92,14 +102,16 @@ function App() {
             </button>
           </li>
         </nav>
+
+        {/* Links para redes sociais */}
         <div className="social-links">
-          <button
+          <a
             href="https://github.com/BrunoDevFront-end"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaGithub className="icon" />
-          </button>
+          </a>
           <a
             href="https://www.linkedin.com/in/devbrunosantos/"
             target="_blank"
@@ -112,6 +124,8 @@ function App() {
           </a>
         </div>
       </div>
+
+      {/* Seção "Sobre mim" */}
       <div id="sobre" className="conteudo">
         <h2>Sobre mim </h2>
         <p>
@@ -148,9 +162,12 @@ function App() {
         </p>
         <br />
       </div>
+
+      {/* Seção de Projetos */}
       <section id="projetos" className="projetos">
         <h1>Projetos</h1>
         <div className="caixa-projetos">
+          {/* Projeto 1 */}
           <div
             className="projetos-card"
             onClick={() => {
@@ -158,7 +175,6 @@ function App() {
             }}
           >
             <img src={imgProjeto1} alt="Projeto1" className="img-Projeto1" />
-
             <div>
               <h3>Cadastro de Usuários</h3>
               <p>
@@ -168,6 +184,8 @@ function App() {
               </p>
             </div>
           </div>
+
+          {/* Projeto 2 */}
           <div
             className="projetos-card"
             onClick={() => {
@@ -175,7 +193,6 @@ function App() {
             }}
           >
             <img src={imgProjeto2} alt="Projeto2" className="img-Projeto1" />
-
             <div>
               <h3>Landing Page</h3>
               <p>
@@ -186,6 +203,8 @@ function App() {
               </p>
             </div>
           </div>
+
+          {/* Projeto 3 */}
           <div
             className="projetos-card"
             onClick={() => {
@@ -193,7 +212,6 @@ function App() {
             }}
           >
             <img src={imgProjeto3} alt="Projeto3" className="img-Projeto1" />
-
             <div>
               <h3>Lista de Tarefas</h3>
               <p>
@@ -203,6 +221,8 @@ function App() {
               </p>
             </div>
           </div>
+
+          {/* Projeto 4 */}
           <div
             className="projetos-card"
             onClick={() => {
@@ -210,7 +230,6 @@ function App() {
             }}
           >
             <img src={imgProjeto4} alt="Projeto4" className="img-Projeto1" />
-
             <div>
               <h3>Catalogo de Carros</h3>
               <p>
@@ -223,6 +242,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Seção de Contato */}
       <section id="contatos" className="contatos">
         <h2 className="contato-titulo">Entre em Contato</h2>
         <form className="formulario-contato" onSubmit={enviarWhats}>
