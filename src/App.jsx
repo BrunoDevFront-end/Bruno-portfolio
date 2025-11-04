@@ -119,7 +119,11 @@ function App() {
           >
             <FaLinkedin className="icon" />
           </a>
-          <a href="brunodsp.dev@gmail.com">
+          <a
+            href="mailto:brunodsp.dev@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaEnvelope className="icon" />
           </a>
         </div>
