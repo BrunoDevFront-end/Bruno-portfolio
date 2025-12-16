@@ -1,6 +1,7 @@
 // Importação dos estilos e imagens
 import "./App.css";
 import fotoPerfil from "./assets/Bruno.jpeg";
+import imgProjeto0 from "./assets/projeto0.png";
 import imgProjeto1 from "./assets/Projeto1.png";
 import imgProjeto2 from "./assets/Projeto2.png";
 import imgProjeto3 from "./assets/Projeto3.png";
@@ -39,7 +40,10 @@ function App() {
 
   // Abre o projeto correspondente conforme o ID informado
   const entrarProjetos = (idProjeto) => {
-    if (idProjeto == 1) {
+    if (idProjeto == 0) {
+      const url = `https://agendamento-de-servi-os.vercel.app/`;
+      window.open(url, "_blank");
+    } else if (idProjeto == 1) {
       const url = `https://usu-rios-cadastrados.vercel.app/`;
       window.open(url, "_blank");
     } else if (idProjeto == 2) {
@@ -171,6 +175,26 @@ function App() {
       <section id="projetos" className="projetos">
         <h1>Projetos</h1>
         <div className="caixa-projetos">
+          {/* Projeto 0 */}
+          <div
+            className="projetos-card"
+            onClick={() => {
+              entrarProjetos(0);
+            }}
+          >
+            <img src={imgProjeto0} alt="Projeto0" className="img-Projeto1" />
+            <div>
+              <h3>Agendamento de Serviços web</h3>
+              <p>
+                🎯 Sistema de Agendamento de Serviços Projeto desenvolvido em
+                React com dashboard interativo, gráficos, fluxo completo de
+                agendamentos e interface totalmente responsiva. Login validado,
+                controle de serviços e status dinâmicos.Tecnologias: React.js •
+                Recharts • CSS/SCSS • JavaScript • Git/GitHub
+              </p>
+            </div>
+          </div>
+
           {/* Projeto 1 */}
           <div
             className="projetos-card"
